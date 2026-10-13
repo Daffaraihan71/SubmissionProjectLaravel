@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,3 +61,12 @@ Route::redirect('/beranda', '/');
 Route::fallback(function () {
     return response('Halaman tidak ditemukan (kustom).', 404);
 });
+
+// Poin a: Route profil
+Route::get('/profil', [MahasiswaController::class, 'profil'])->name('mahasiswa.profil');
+
+// Poin b: Route daftar mahasiswa
+Route::get('/mahasiswa', [MahasiswaController::class, 'daftar']);
+
+// Poin c: Route detail mahasiswa dengan parameter NIM
+Route::get('/mahasiswa/{nim}', [MahasiswaController::class, 'detail'])->name('mahasiswa.detail');

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
@@ -70,3 +71,14 @@ Route::get('/mahasiswa', [MahasiswaController::class, 'daftar']);
 
 // Poin c: Route detail mahasiswa dengan parameter NIM
 Route::get('/mahasiswa/{nim}', [MahasiswaController::class, 'detail'])->name('mahasiswa.detail');
+
+
+// Product
+Route::get('/products', [ProductController::class, 'index']);
+
+Route::get('/products/{id}',
+    function ($id) {
+        return 'Produk #' .id;
+    });
+
+Route::get('/products', [ProductController::class, 'show']);
